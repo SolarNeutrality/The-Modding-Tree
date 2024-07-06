@@ -1,8 +1,8 @@
 let modInfo = {
-	name: "The ??? Tree",
-	id: "mymod",
-	author: "nobody",
-	pointsName: "points",
+	name: "The Time Tree",
+	id: "timemod",
+	author: "SolarNeutrality",
+	pointsName: "time shards" ,
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
@@ -13,14 +13,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-	num: "0.0",
-	name: "Literally nothing",
+	num: "0.0.1",
+	name: "Not the second update",
 }
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.0</h3><br>
-		- Added things.<br>
-		- Added stuff.`
+	<h3>v0.0.1</h3><br>
+		- Added seconds.<br>
+		- Added 2 second upgrades.<br>
+		- Current Endgame: 1000 time shards, 10 seconds`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -43,6 +44,10 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if (hasUpgrade('s',12)) gain = gain.add(upgradeEffect('s',12))
+	if (hasUpgrade('s', 11)) gain = gain.times(upgradeEffect('s', 11))
+
+
 	return gain
 }
 
@@ -56,8 +61,8 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e280000000"))
-}
+	return player.points.gte(new Decimal("e3"))
+}	
 
 
 
